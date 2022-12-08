@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, Dimensions, TextInput  } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, Dimensions, TextInput, Alert  } from 'react-native';
 import firebase from '../config/firebase';
 
 export default function Cadastro() {
@@ -20,7 +20,10 @@ export default function Cadastro() {
             setNome('');
             setCargo('');
 
-            alert("Registro Cadastrado");
+            Alert.alert("CADASTRO REALIZADO", "INFORMAÇÕES CADASTRADAS COM SUCESSO", [
+                
+                { text: "OK" },
+              ]);
         }
     }
 
@@ -48,7 +51,10 @@ export default function Cadastro() {
             setCargo('');
             setKey('');
 
-            alert("Registro alterado");
+            Alert.alert("CADASTRO ALTERADO", "INFORMAÇÕES ALTERADAS COM SUCESSO", [
+                
+                { text: "OK" },
+              ]);
         }
     }
 
@@ -59,22 +65,25 @@ export default function Cadastro() {
             setCargo('');
             setKey('');
 
-            alert("Registro deletado");
+            Alert.alert("CADASTRO DELETADO", "INFORMAÇÕES DELETADAS COM SUCESSO", [
+                
+                { text: "OK" },
+              ]);
         }
     }
 
   return (
     <View style={styles.container}>
-        <Text style={styles.titulo}>Cadastro</Text>
+        <Text style={styles.titulo}>CADASTRO</Text>
 
-        <Text style={styles.texto}>Nome:</Text>
+        <Text style={styles.texto}>NOME:</Text>
         <TextInput 
             style={styles.input}
             value={nome}
             onChangeText={(texto)=>setNome(texto)}
         />   
 
-        <Text style={styles.texto}>Cargo:</Text>
+        <Text style={styles.texto}>CARGO:</Text>
         <TextInput 
             style={styles.input}
             value={cargo}
@@ -82,19 +91,19 @@ export default function Cadastro() {
         />  
 
         <TouchableOpacity style={styles.botao} onPress={cadastrar}>
-            <Text style={styles.textoBotao}>Inserir</Text>
+            <Text style={styles.textoBotao}>INSERIR</Text>
         </TouchableOpacity>
 
         <TouchableOpacity style={styles.botao} onPress={buscar}>
-            <Text style={styles.textoBotao}>Buscar</Text>
+            <Text style={styles.textoBotao}>BUSCAR</Text>
         </TouchableOpacity>
 
         <TouchableOpacity style={styles.botao} onPress={alterar}>
-            <Text style={styles.textoBotao}>Alterar</Text>
+            <Text style={styles.textoBotao}>ALTERAR</Text>
         </TouchableOpacity>
 
         <TouchableOpacity style={styles.botao} onPress={deletar}>
-            <Text style={styles.textoBotao}>Deletar</Text>
+            <Text style={styles.textoBotao}>DELETAR</Text>
         </TouchableOpacity>
 
 
@@ -111,31 +120,37 @@ const styles = StyleSheet.create({
   titulo:{
       fontSize:30,
       textAlign:'center',
-      marginTop:20
+      marginTop:20,
+      color: '#4281F5'
   },
   botao:{
-    backgroundColor:'#ccc',
-    marginTop:20,
-    width:Dimensions.get('window').width-20,
-    marginLeft:10,
-    marginRight:10
+    backgroundColor: '#4281F5',
+    marginTop: 20,
+    width: '80%',
+    height: 40,
+    marginLeft: '10%',
+    borderBottomLeftRadius: 13,
+    borderTopRightRadius: 13
   },
     textoBotao:{
-        fontSize:25,
-        textAlign:'center'
+        fontSize: 25,
+        textAlign:'center',
+        color: '#fff'
     },
     input:{
-    width:Dimensions.get('window').width-20,
-    height:40,
-    borderColor:'#000',
-    borderWidth:1,
-    marginLeft:10,
-    marginRight:10,
-    fontSize:20
-    },
+        
+        borderBottomWidth: 2,
+        width: 325,
+        height: 35,
+        fontSize: 20,
+        borderColor: '#4281F5',
+        marginLeft: 40
+      },
     texto:{
+        marginTop: 10,
         fontSize:20,
-        marginLeft:10
+        marginLeft: 40,
+        color: '#4281F5'
     }
 
 });

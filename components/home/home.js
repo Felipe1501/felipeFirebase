@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, Dimensions, TextInput } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, Dimensions, TextInput, Image } from 'react-native';
 import { useNavigation } from '@react-navigation/core';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
@@ -37,7 +37,7 @@ export default function Home() {
   if(nome == null || nome == ''){
     return(
       <View style={styles.container}> 
-          <Text style={styles.titulo}>Digite seu Nome:</Text>
+          <Text style={styles.titulo}>Digite seu nome gajo:</Text>
 
           <TextInput 
             style={styles.input}
@@ -58,18 +58,24 @@ export default function Home() {
 
     <View style={styles.container}>
 
-        <Text style={styles.titulo}>Olá {nome} - Escolha uma opção:</Text>
-        
+        <Text style={styles.titulo}>Seja Bem Vindo {nome}! </Text>
+        <Image
+            style={styles.img}
+            source={{
+                uri: 'https://www.otempo.com.br/image/contentid/policy:1.2740672:1664544966/Neymar1-jpg.jpg',
+            }}
+            />
+            <Text style={styles.titulo}>Escolha uma opção abaixo:</Text>
         <TouchableOpacity style={styles.botao}
               onPress={limparNome}
           >
-              <Text style={styles.textoBotao}> Limpar </Text>
+              <Text style={styles.textoBotao}> MUDAR </Text>
         </TouchableOpacity>
 
         <TouchableOpacity style={styles.botao}
             onPress={()=>navigation.navigate('Cadastro')}
         >
-            <Text style={styles.textoBotao}> Cadastro </Text>
+            <Text style={styles.textoBotao}> CADASTRO </Text>
         </TouchableOpacity>
     </View>
   );
@@ -84,27 +90,39 @@ const styles = StyleSheet.create({
   titulo:{
       fontSize:30,
       textAlign:'center',
-      marginTop:20
+      marginTop:20,
+      color: '#0072FF'
   },
   botao:{
-      backgroundColor:'#ccc',
-      marginTop:20,
-      width:Dimensions.get('window').width-20,
-      marginLeft:10,
-      marginRight:10
+    backgroundColor: '#0294E8',
+    marginTop: 20,
+    width: '80%',
+    height: 40,
+    marginLeft: '10%',
+    borderBottomLeftRadius: 13,
+    borderTopRightRadius: 13
   },
   textoBotao:{
-      fontSize:25,
-      textAlign:'center'
+      fontSize: 25,
+      textAlign:'center',
+      color: '#fff'
   },
   input:{
-    width:Dimensions.get('window').width-20,
-    height:40,
-    borderColor:'#000',
-    borderWidth:1,
-    marginLeft:10,
-    marginRight:10,
-    fontSize:20
+    marginTop: 25,
+    borderBottomWidth: 2,
+    width: 325,
+    height: 35,
+    fontSize: 20,
+    borderColor: '#4281F5',
+    marginLeft: 40
+  },
+  img: {
+    width: 400,
+        height: 230,
+        margin: 5,
+        textAlign: 'center',
+        borderRadius: 20,
+        alignSelf: 'center'
   }
 
 });
